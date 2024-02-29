@@ -1,11 +1,7 @@
-FROM node:18-alpine
-
-WORKDIR /.dev/clone-tabnews
-
-COPY package.json ./
-
-RUN npm install next@13.1.6 \
-    && npm install react@18.2.0 \
-    && npm install react-dom@18.2.0
-
+FROM node:19.5.0-alpine
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build
 EXPOSE 3000
+CMD ["npm", "start"]
